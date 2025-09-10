@@ -44,27 +44,20 @@ theme:
 
   # Theme Modes ...............................................
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default 
+    - scheme: default 
       primary: blue
       accent: pink
       toggle:
-        icon: material/brightness-2
+        icon: material/brightness-7
         name: Switch to dark mode
     # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: green
       accent: cyan
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference 
+        name: Switch to light mode 
 
   # Theme Features ...............................................
   features:
@@ -73,7 +66,8 @@ theme:
     - navigation.instant.progress   # load progress indicator
     - navigation.tracking           # tracks anchor tags in URL
     - navigation.tabs               # tabbed on desktop, single in mobile    
-    - navigation.tabs.sticky        # tabs stick when scrolling downtheme:
+    - navigation.tabs.sticky        # tabs stick when scrolling down
+    - header.sticky                 # header sticks to top when scrolling
     - navigation.path               # add breadcrumbs
     - navigation.indexes            # default index.md in folder is section page
     - navigation.top
@@ -81,6 +75,7 @@ theme:
     - navigation.footer
     - content.code.copy             # allow copy-paste from codeblocks
     - content.tabs.link             # Ensures site-wide switch to same tab name
+    - navigation.sticky             # sticky sidebar navigation
 
 # Extras  ...............................................
 extra:
