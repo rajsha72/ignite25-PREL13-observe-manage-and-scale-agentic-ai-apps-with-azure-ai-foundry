@@ -32,7 +32,7 @@ Both packages automatically apply the GenAI semantic conventions and expose togg
 
 ## Running the Samples
 
-1. Set the environment variables for your preferred model host (GitHub Models or Azure OpenAI). Each sample documents the required variables at the top of the file.
+1. Export the following environment variables before running any notebook (set unused values to an empty string): `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_VERSION`, `AZURE_AI_FOUNDRY_NAME`, `AZURE_AOAI_ACCOUNT`, `AZURE_SUBSCRIPTION_ID`, `AZURE_RESOURCE_GROUP`, `AZURE_AISEARCH_ENDPOINT`, `AZURE_AISEARCH_INDEX`, `AZURE_AISEARCH_RESOURCE_GROUP`, and `APPLICATION_INSIGHTS_CONNECTION_STRING`.
 1. Export an `APPLICATION_INSIGHTS_CONNECTION_STRING` if you want spans to flow into Azure Monitor; otherwise the scripts fall back to console exporters so you can inspect payloads locally.
 1. Open any notebook (for example, `lab/5-Observability/1-OpenAIAgents/weekend_planner.ipynb`) and run the cells in order. Observe the emitted spans and confirm that the GenAI attributes align with the semantic conventions.
 
