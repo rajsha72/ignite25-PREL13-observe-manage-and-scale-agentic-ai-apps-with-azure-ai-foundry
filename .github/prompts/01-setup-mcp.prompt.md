@@ -1,14 +1,13 @@
 ---
 mode: agent
 ---
-Define the task to achieve, including specific requirements, constraints, and success criteria.
 
-# Task
+# Task: Update `.vscode/mcp.json` Configuration
 
-1. If the `.vscode` directory does not exist in the root of the repository, create it.
-2. Inside the `.vscode` directory, create a file named `mcp.json` if it does not already exist.
-3. Populate the `mcp.json` file with the following JSON content:
-
+1. If the `.vscode/mcp.json` file does not exist in the repository, create it.
+1. Check if the `.vscode/mcp.json` file contains the MCP server configuration for Microsoft Docs.
+   Else add it with the following content and remind the user to "start" the server.
+   
 ```json
 {
 	"servers": {

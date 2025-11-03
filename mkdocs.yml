@@ -30,7 +30,7 @@ repo_url: https://github.com/microsoft/ignite25-PDY123-learn-how-to-observe-mana
 copyright: >
    Copyright &copy; 2023 - present Microsoft
 extra_css:
-  - assets/extra.css  # Adjust path if needed
+  - stylesheets/extra.css
 
 # Configuration ...............................................
 theme:
@@ -47,14 +47,15 @@ theme:
     # Palette toggle for light mode
     - scheme: default 
       primary: blue
-      accent: pink
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    
     # Palette toggle for dark mode
     - scheme: slate
-      primary: green
-      accent: cyan
+      primary: blue
+      accent: light blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode 
@@ -115,3 +116,38 @@ markdown_extensions:
 
 # Navigation  ...............................................
 nav:
+  - Home: index.md
+  - Core Labs:
+    - Overview: core-labs/index.md
+    - Workshop Outline: core-labs/outline.md
+    - 0. Setup & Validation:
+      - Overview: core-labs/0-setup/index.md
+      - Zava Scenario: core-labs/0-setup/scenario.md
+      - Validate Setup: core-labs/0-setup/00-validate-setup.md
+    - 1. Agent Architecture:
+      - Overview: core-labs/1-agents/index.md
+      - Agent Service Creation: core-labs/1-agents/11-agent-service.md
+      - Agent Framework Orchestration: core-labs/1-agents/12-agent-framework.md
+    - 2. Model Context:
+      - Overview: core-labs/2-models/index.md
+      - Simulate Dataset: core-labs/2-models/21-simulate-dataset.md
+      - Evaluate Models: core-labs/2-models/22-evaluate-models.md
+    - 3. Model Customization:
+      - Overview: core-labs/3-customization/index.md
+      - Basic Fine-tuning: core-labs/3-customization/31-basic-finetuning.md
+      - Custom Grader: core-labs/3-customization/32-custom-grader.md
+      - Distillation Fine-tuning: core-labs/3-customization/33-distill-finetuning.md
+    - 4. Evaluation Metrics:
+      - Overview: core-labs/4-evaluation/index.md
+      - First Evaluation: core-labs/4-evaluation/41-first-evaluation.md
+      - Evaluate Quality: core-labs/4-evaluation/42-evaluate-quality.md
+      - Evaluate Safety: core-labs/4-evaluation/43-evaluate-safety.md
+      - Evaluate Agents: core-labs/4-evaluation/44-evaluate-agents.md
+    - 5. Tracing & Telemetry:
+      - Overview: core-labs/5-tracing/index.md
+    - 6. Deployment & Insights:
+      - Overview: core-labs/6-deployment/index.md
+    - 7. Teardown & Cleanup:
+      - Overview: core-labs/7-teardown/index.md
+  - More Labs:
+    - Overview: more-labs/index.md

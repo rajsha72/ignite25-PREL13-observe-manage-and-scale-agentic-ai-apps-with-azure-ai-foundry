@@ -1,16 +1,5 @@
 # ................ General Python Dependencies
 ipython
-pandas
-numpy
-python-dotenv
-tiktoken
-
-# ................ Azure AI SDK Dependencies
-azure-identity
-azure-search-documents
-azure-ai-evaluation
-
-## Core libraries
 python-dotenv   # Environment variables
 ipykernel       # Jupyter Notebooks
 uv              # MCP Server
@@ -20,15 +9,28 @@ matplotlib==3.10.3  # For creating visualizations
 numpy==2.3.1        # For numerical computations
 pandas              # For data manipulation and analysis
 
-## ..... Setup: Product Index
+# ................ Azure AI SDK Dependencies
+azure-identity                  # For Azure authentication
 azure-search-documents==11.5.3  # For Azure AI Search
+azure-ai-evaluation==1.12.0     # For model evaluation (pinned to 1.12.0 - stable version from Oct 2, 2025)
+azure-mgmt-cognitiveservices    # For model deployment
 
+# Agent Framework - Ensure all packages are compatible versions
+agent-framework>=1.0.0b251028
+agent-framework-azure-ai>=1.0.0b251028
+agent-framework-core>=1.0.0b251028    
 
-## ..... Demo 1: Basic Fine Tuning 
+## ............... Azure OpenAI Dependencies
 openai 
 requests 
 tiktoken 
 
-## ..... Demo 2: Distillation 
-azure-identity                 # For Azure authentication
-azure-mgmt-cognitiveservices   # For model deployment
+## ............... Tracing Lab Dependencies
+opentelemetry-instrumentation-openai-agents-v2
+langchain-azure-ai
+#openai 
+openai-agents 
+rich 
+azure-monitor-opentelemetry-exporter
+#python-dotenv
+azure-monitor-opentelemetry # --- For Langchain

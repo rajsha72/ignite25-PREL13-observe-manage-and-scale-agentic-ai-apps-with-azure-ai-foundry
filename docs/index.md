@@ -1,102 +1,58 @@
 ---
-title : "Begin Here"
-description: "PDY123: Learn How To Observe, Manage, and Scale, Agentic AI Apps Using Azure"
+template: home.html
 ---
 
-# Learn How To Observe, Manage, and Scale, Agentic AI Apps Using Azure
+<p align="center">
+<img src="./assets/Banner-ignite-25.png" alt="Microsoft Ignite 2025 Banner" width="1200"/>
+</p>
 
-!!! info "ABSTRACT"
+# PREL13: Learn to Observe, Manage, and Scale Agentic AI Apps Using Azure
 
-    This hands-on workshop will provide participants with the skills to effectively manage, govern, and scale agentic AI applications using Azure and Azure AI Foundry. The session will cover observability capabilities, model management policies, agent functionalities, and governance strategies. Participants will engage in practical exercises to apply these concepts in real-world scenarios.
+This hands-on workshop provides you with the skills to effectively manage, govern, and scale agentic AI applications using Azure and Azure AI Foundry. The session covers observability capabilities, model management policies, agent functionalities, and governance strategies.
 
-    **Level:** 300-400 <br/>
-    **Duration:** 4 hours
-
----
-
-## 1. Before You Begin
-
-Before we dive into the workshop, here are two actions you should take:
-
-!!! info "1. STAR THE REPO & WATCH FOR UPDATES"
-
-On completing this workshop, you will walk away with a **personal copy** of the repo that you can use as a sandbox for self-guided exploration. We expect to continue updating this with new labs and resources. Click below to star the repo and watch for updates.
-
-<a class="github-button" href="https://github.com/microsoft/ignite25-PDY123-learn-how-to-observe-manage-and-scale-agentic-ai-apps-using-azure/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star microsoft/ignite25-PDY123-learn-how-to-observe-manage-and-scale-agentic-ai-apps-using-azure/ on GitHub"> Star This Repo </a>
-
-!!! info "2. PICK YOUR TAB"
-
-The workshop is setup for use by both instructor-led (in-venue) and self-guided (at-home) learners. Select the tab that represents your current status, to get the related instructions. _This preference is automatically enforced sitewide_,
-
-=== "Instructor-Led (In Venue)"
-
-    !!! success "I am at a Microsoft Ignite Session · I'll use the provided Azure subscription."
-
-=== "Self-Guided (At Home)"
-
-    !!! quote "I am working through the lab at home · I'll use my own Azure subscription."
+**Workshop Details:**
+- **Level:** 300-400 
+- **Duration:** 4 hours
+- **Format:** Instructor-led (in-venue) + Self-guided (take-home)
 
 ---
 
-## 2. About The Workshop
+## The End-to-End Journey
 
-This is a 4-hour workshop that is broken up into smaller labs that should be completed in order. 
+As a Zava AI Engineer, your journey has three main phases:
 
-The workshop is organized into two tracks: **Core Labs** that cover the learning objectives outlined below, and **More Labs** that provide additional content for exploration if time permits. _You are encouraged to revisit the More Labs section in self-guided mode, at home_.
+1. **Plan** - Select models, identify goals, generate datasets
+2. **Develop** - Implement agents, customize models & evaluate outcomes
+3. **Operate** - Deploy solution, monitor performance & iterate as needed
 
-!!! quote "PLANNING ROADMAP FOR CORE LABS"
+This workshop contains hands-on exercises that teach you key tools, features, and workflows for building production-ready agentic AI applications.
 
-    ![Plan](./assets/plan.png)
+---
 
-### 2.1 What are we building?
+## Workshop Tracks
 
-Zava is an enterprise retail store that specializes in home improvement goods for DIY enthusiasts. You are an AI engineer tasked with building **Cora**, the new customer support AI chatbot for Zava customers. 
+### 🎯 Core Labs (In-Venue)
+Complete these labs during the instructor-led session with pre-provisioned Azure resources.
 
-To unlock business value, Zava sets three requirements:
+### 🏠 More Labs (Take-Home)
+Explore additional content at your own pace using your Azure subscription after the event.
 
-1. **Be Polite & Helpful** - Cora must respond with a desired tone & style.
-1. **Be Cost-Effective** - Cora should be fast to respond and cheap to operate
-1. **Be Safe & Reliable** - Cora has end-to-end observability for trustworthy AI operation
+---
 
-In this workshop, we'll see how we can start from a basic AI Agent template - and iteratively refine model context and behavior till we get the desired _Cora AI_ experience.
+## Getting Started
 
+Ready to begin? Start with the setup and validation lab to ensure your environment is configured correctly.
 
-### 2.2 What will we learn?
+[Begin Setup →](core-labs/0-setup/){ .md-button .md-button--primary }
+[View Workshop Outline →](core-labs/outline.md){ .md-button }
 
-By the end of this session, you will be able to
+---
 
-- Build and deploy an agentic AI retail chatbot on Azure AI Foundry
-- Evaluate the quality, safety & agentic efficacy of chatbot operation
-- Fine-Tune the chatbot model to customize tone & style of response
-- Distill chatbot behavior to a smaller model for cost-effective operation
-- Trace and monitor chatbot operations to detect & debug performance issues
-- Understand how Azure AI Foundry enables end-to-end observability for AI 
+## Additional Resources
 
+- **Application Scenario:** Learn about the [Zava Enterprise Retailer](core-labs/0-setup/scenario.md) customer service chatbot
+- **Conceptual Framework:** Review the [Workshop Outline](core-labs/outline.md) for detailed background on agentic AI concepts
+- **Source Repository:** [GitHub Repository](https://github.com/microsoft/ignite25-PDY123-learn-how-to-observe-manage-and-scale-agentic-ai-apps-using-azure)
 
-### 2.3 Check Pre-Requisites!
-
-=== "Instructor-Led (In Venue)"
-
-    To be effective in this workshop, you will need:
-
-    - [ ] A personal GitHub Account. Sign up [for a free account](https://github.com/signup) if needed.
-    - [ ] Familiarity with Visual Studio Code and Python. This is a hands-on lab.
-
-    We will provide the following: 
-
-    - [X] Powered laptops setup with the labs for your use.
-    - [X] An Azure subscription with pre-provisioned resources.
-
-=== "Self-Guided (At Home)"
-
-    To be effective in this workshop, you will need:
-
-    - [ ] A personal GitHub Account. Sign up [for a free account](https://github.com/signup) if needed.
-    - [ ] Familiarity with Visual Studio Code and Python. This is a hands-on lab.
-    - [ ] Your own laptop. Make sure it is fully-charged for a 4-hr session.
-    - [ ] Your own Azure subscription. We'll help you provision the project!
-
-## 3. Let's Get Started 🚀
-
-Click the _Next_ button below - or click on [Core Labs](./Core-Labs/1-Get-Started/01/) in the navigation menu!
-
+!!! tip "Pro Tip"
+    Star and watch the GitHub repository for updates - we'll continue adding More Labs content after Microsoft Ignite 2025!

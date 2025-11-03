@@ -1,0 +1,113 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+{{ super() }}
+<style>
+  .md-sidebar--primary {
+    display: none;
+  }
+  .md-sidebar--secondary {
+    display: none !important;
+  }
+  .md-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .md-main__inner {
+    margin: 0;
+    max-width: 100%;
+  }
+  .md-content__inner {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 2rem;
+  }
+  
+  /* Container for hero and labs with responsive max-width */
+  .hero-banner,
+  .labs-grid {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Responsive padding */
+  @media screen and (max-width: 768px) {
+    .md-content__inner {
+      padding: 1rem;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block site_nav %}
+  <!-- Hide navigation sidebar on home page -->
+{% endblock %}
+
+{% block toc %}
+  <!-- Hide TOC sidebar on home page -->
+{% endblock %}
+
+{% block content %}
+<div class="hero-banner">
+  <h3>Learning Objectives</h3>
+  <ul class="objectives-list">
+    <li>Implement and orchestrate multi-agent systems using Azure AI Agent Service and Microsoft Agent Framework</li>
+    <li>Select, customize, and fine-tune AI models to match task complexity and business requirements</li>
+    <li>Evaluate AI application quality, safety, and agent performance using Azure AI evaluation tools</li>
+    <li>Monitor agentic applications with tracing, telemetry, and observability best practices</li>
+    <li>Deploy and scale production-ready agentic AI solutions on Azure AI Foundry</li>
+    <li>Apply governance strategies for responsible AI development and compliance</li>
+  </ul>
+</div>
+
+<div class="labs-grid">
+  <a href="core-labs/0-setup/" class="lab-card">
+    <div class="lab-number">00</div>
+    <h3>Setup & Validation</h3>
+    <p>Validate infrastructure, understand the Zava scenario, and prepare your development environment</p>
+  </a>
+  
+  <a href="core-labs/1-agents/" class="lab-card">
+    <div class="lab-number">01</div>
+    <h3>Agent Architecture</h3>
+    <p>Create agents using Azure AI Agent Service and orchestrate multi-agent workflows with Agent Framework</p>
+  </a>
+  
+  <a href="core-labs/2-models/" class="lab-card">
+    <div class="lab-number">02</div>
+    <h3>Model Context</h3>
+    <p>Select appropriate models, generate synthetic datasets, and evaluate model performance</p>
+  </a>
+  
+  <a href="core-labs/3-customization/" class="lab-card">
+    <div class="lab-number">03</div>
+    <h3>Model Customization</h3>
+    <p>Fine-tune models for specific behaviors, create custom evaluators, and apply distillation techniques</p>
+  </a>
+  
+  <a href="core-labs/4-evaluation/" class="lab-card">
+    <div class="lab-number">04</div>
+    <h3>Evaluation Metrics</h3>
+    <p>Run evaluations for quality, safety, and agent performance using Azure AI evaluation SDK</p>
+  </a>
+  
+  <a href="core-labs/5-tracing/" class="lab-card">
+    <div class="lab-number">05</div>
+    <h3>Tracing & Telemetry</h3>
+    <p>Implement observability with tracing, collect span snapshots, and analyze agent sessions</p>
+  </a>
+  
+  <a href="core-labs/6-deployment/" class="lab-card">
+    <div class="lab-number">06</div>
+    <h3>Deployment & Insights</h3>
+    <p>Deploy solutions using developer tier and monitor performance in production</p>
+  </a>
+  
+  <a href="core-labs/7-teardown/" class="lab-card">
+    <div class="lab-number">07</div>
+    <h3>Teardown & Cleanup</h3>
+    <p>Clean up Azure resources and properly decommission your development environment</p>
+  </a>
+</div>
+{% endblock %}

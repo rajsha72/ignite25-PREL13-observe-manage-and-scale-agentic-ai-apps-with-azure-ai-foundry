@@ -10,6 +10,24 @@
 *.userosscache
 *.sln.docstates
 *.env
+/.env.*
+!/.env.sample
+
+# ForBeginners folder
+scripts/ForBeginners/
+scripts/ForBeginners.old/
+
+# Temporary and backup folders
+tmp/
+TMP/
+*.old/
+*.OLD/
+*.orig/
+**/.old/
+**/.OLD/
+**/.orig/
+**/tmp/
+**/TMP/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -420,6 +438,16 @@ FodyWeavers.xsd
 #mkdocs static site 
 site/*
 
+# Jupyter/Python evaluation and output directories
+**/*-results/
+**/*-output/
+**/__pycache__/
+**/.pytest_cache/
+**/.ipynb_checkpoints/
+
 # .github
 .venv
 .github/chatmodes/
+
+# Ignore tmp/ workspaces
+tmp/
