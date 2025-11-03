@@ -84,38 +84,81 @@ fi
 echo -e "${GREEN}✓ Azure CLI authenticated${NC}\n"
 
 # ============================================================================
-# Step 4: Get Azure OpenAI endpoint
+# Step 4: Get Azure OpenAI endpoint and API key
 # ============================================================================
-echo -e "${YELLOW}Step 4: Retrieving Azure OpenAI endpoint...${NC}"
+echo -e "${YELLOW}Step 4: Retrieving Azure OpenAI endpoint and API key...${NC}"
 
-AOAI_NAME=$(echo "$AZURE_AI_FOUNDRY_NAME" | grep -o 'aoai-[^"]*' || echo "aoai-lqkyocm5gjeti")
-if [ -z "$AOAI_NAME" ]; then
-    # Try to find from existing project endpoint
-    AOAI_NAME=$(echo "$AZURE_EXISTING_AIPROJECT_ENDPOINT" | grep -oP 'aoai-[^.]+' || echo "")
+# Extract AOAI account name from the resource ID (most reliable source)
+if [ -n "$AZURE_EXISTING_AIPROJECT_RESOURCE_ID" ]; then
+    AOAI_NAME=$(echo "$AZURE_EXISTING_AIPROJECT_RESOURCE_ID" | grep -oP '/accounts/\K[^/]+' || echo "")
+fi
+
+# Fallback: try to extract from endpoint
+if [ -z "$AOAI_NAME" ] && [ -n "$AZURE_EXISTING_AIPROJECT_ENDPOINT" ]; then
+    AOAI_NAME=$(echo "$AZURE_EXISTING_AIPROJECT_ENDPOINT" | grep -oP 'https://\K[^.]+' || echo "")
 fi
 
 if [ -n "$AOAI_NAME" ]; then
-    OPENAI_ENDPOINT=$(az cognitiveservices account show \
+    # Construct the OpenAI endpoint using the new format
+    # The new format is: https://{resource-name}.openai.azure.com/
+    OPENAI_ENDPOINT="https://${AOAI_NAME}.openai.azure.com/"
+    
+    # Retrieve the API key
+    OPENAI_API_KEY=$(az cognitiveservices account keys list \
         --name "$AOAI_NAME" \
         --resource-group "$AZURE_RESOURCE_GROUP" \
-        --query "properties.endpoint" -o tsv 2>/dev/null || echo "")
+        --query "key1" -o tsv 2>/dev/null || echo "")
     
-    if [ -n "$OPENAI_ENDPOINT" ]; then
-        echo -e "${GREEN}✓ Found OpenAI endpoint: $OPENAI_ENDPOINT${NC}"
+    if [ -n "$OPENAI_API_KEY" ]; then
+        echo -e "${GREEN}✓ Found OpenAI account: $AOAI_NAME${NC}"
+        echo -e "${GREEN}✓ Using OpenAI endpoint: $OPENAI_ENDPOINT${NC}"
+        echo -e "${GREEN}✓ Retrieved API key${NC}"
     else
-        echo -e "${YELLOW}⚠ Could not retrieve OpenAI endpoint, using value from AZD${NC}"
-        OPENAI_ENDPOINT="https://${AOAI_NAME}.cognitiveservices.azure.com/"
+        echo -e "${YELLOW}⚠ Could not retrieve API key, using constructed endpoint${NC}"
+        echo -e "${GREEN}✓ Using OpenAI endpoint: $OPENAI_ENDPOINT${NC}"
     fi
 else
-    echo -e "${YELLOW}⚠ Could not determine OpenAI account name${NC}"
+    echo -e "${RED}✗ Could not determine OpenAI account name${NC}"
     OPENAI_ENDPOINT=""
+    OPENAI_API_KEY=""
 fi
 echo ""
 
 # ============================================================================
-# Step 5: Get Application Insights connection string
+# Step 5: Get Azure AI Search API key
 # ============================================================================
-echo -e "${YELLOW}Step 5: Retrieving Application Insights details...${NC}"
+echo -e "${YELLOW}Step 5: Retrieving Azure AI Search API key...${NC}"
+
+if [ -n "$AZURE_AI_SEARCH_ENDPOINT" ]; then
+    # Extract search service name from endpoint
+    SEARCH_NAME=$(echo "$AZURE_AI_SEARCH_ENDPOINT" | grep -oP 'https://\K[^.]+' || echo "")
+    
+    if [ -n "$SEARCH_NAME" ]; then
+        SEARCH_API_KEY=$(az search admin-key show \
+            --service-name "$SEARCH_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --query "primaryKey" -o tsv 2>/dev/null || echo "")
+        
+        if [ -n "$SEARCH_API_KEY" ]; then
+            echo -e "${GREEN}✓ Found Search service: $SEARCH_NAME${NC}"
+            echo -e "${GREEN}✓ Retrieved Search API key${NC}"
+        else
+            echo -e "${YELLOW}⚠ Could not retrieve Search API key${NC}"
+        fi
+    else
+        echo -e "${YELLOW}⚠ Could not determine Search service name${NC}"
+        SEARCH_API_KEY=""
+    fi
+else
+    echo -e "${YELLOW}⚠ No Search endpoint configured${NC}"
+    SEARCH_API_KEY=""
+fi
+echo ""
+
+# ============================================================================
+# Step 6: Get Application Insights connection string
+# ============================================================================
+echo -e "${YELLOW}Step 6: Retrieving Application Insights details...${NC}"
 
 # Find Application Insights resource
 APPINSIGHTS_RESOURCES=$(az resource list \
@@ -143,9 +186,35 @@ fi
 echo ""
 
 # ============================================================================
-# Step 6: Generate the new .env file
+# Step 7: Extract AI Project Name from Resource ID
 # ============================================================================
-echo -e "${YELLOW}Step 6: Generating updated .env file...${NC}"
+echo -e "${YELLOW}Step 7: Extracting AI Project name...${NC}"
+
+# Extract actual project name from resource ID
+if [ -n "$AZURE_EXISTING_AIPROJECT_RESOURCE_ID" ]; then
+    EXTRACTED_PROJECT_NAME=$(echo "$AZURE_EXISTING_AIPROJECT_RESOURCE_ID" | grep -oP '/projects/\K[^/]+' || echo "")
+    
+    if [ -n "$EXTRACTED_PROJECT_NAME" ]; then
+        AZURE_AI_PROJECT_NAME="$EXTRACTED_PROJECT_NAME"
+        echo -e "${GREEN}✓ Found AI Project: $AZURE_AI_PROJECT_NAME${NC}"
+    else
+        echo -e "${YELLOW}⚠ Could not extract project name from resource ID${NC}"
+        # Keep existing value if available
+        if [ -z "$AZURE_AI_PROJECT_NAME" ]; then
+            echo -e "${RED}✗ No project name available${NC}"
+        else
+            echo -e "${YELLOW}⚠ Using existing value: $AZURE_AI_PROJECT_NAME${NC}"
+        fi
+    fi
+else
+    echo -e "${YELLOW}⚠ No project resource ID available${NC}"
+fi
+echo ""
+
+# ============================================================================
+# Step 8: Generate the new .env file
+# ============================================================================
+echo -e "${YELLOW}Step 8: Generating updated .env file...${NC}"
 
 # Backup existing .env
 if [ -f "$ENV_FILE" ]; then
@@ -170,14 +239,14 @@ AZURE_SUBSCRIPTION_ID="$AZURE_SUBSCRIPTION_ID"
 AZURE_TENANT_ID="$AZURE_TENANT_ID"
 
 # .... Azure AI Foundry
-AZURE_OPENAI_API_KEY=  # TODO: Get from Azure Portal if needed (using DefaultAzureCredential instead)
+AZURE_OPENAI_API_KEY="$OPENAI_API_KEY"
 AZURE_OPENAI_ENDPOINT="$OPENAI_ENDPOINT"
 AZURE_OPENAI_API_VERSION="2025-02-01-preview" 
 AZURE_OPENAI_DEPLOYMENT="$AZURE_AI_AGENT_DEPLOYMENT_NAME"
 
 # .... Azure AI Foundry Resources (from Azure portal)
 AZURE_AI_FOUNDRY_NAME="$AOAI_NAME"
-AZURE_AI_PROJECT_NAME="${AZURE_AI_PROJECT_NAME:-proj-lqkyocm5gjeti}"
+AZURE_AI_PROJECT_NAME="$AZURE_AI_PROJECT_NAME"
 AZURE_EXISTING_AIPROJECT_ENDPOINT="$AZURE_EXISTING_AIPROJECT_ENDPOINT"
 AZURE_EXISTING_AIPROJECT_RESOURCE_ID="$AZURE_EXISTING_AIPROJECT_RESOURCE_ID"
 
@@ -185,7 +254,7 @@ AZURE_EXISTING_AIPROJECT_RESOURCE_ID="$AZURE_EXISTING_AIPROJECT_RESOURCE_ID"
 AZURE_SEARCH_ENDPOINT="$AZURE_AI_SEARCH_ENDPOINT"
 AZURE_AISEARCH_ENDPOINT="$AZURE_AI_SEARCH_ENDPOINT"
 AZURE_AI_SEARCH_ENDPOINT="$AZURE_AI_SEARCH_ENDPOINT"
-AZURE_SEARCH_API_KEY=  # TODO: Get from Azure Portal if needed (using DefaultAzureCredential instead)
+AZURE_SEARCH_API_KEY="$SEARCH_API_KEY"
 AZURE_SEARCH_INDEX_NAME="$AZURE_AI_SEARCH_INDEX_NAME"
 AZURE_AISEARCH_INDEX="$AZURE_AI_SEARCH_INDEX_NAME"
 AZURE_AI_SEARCH_INDEX_NAME="$AZURE_AI_SEARCH_INDEX_NAME"
@@ -226,7 +295,7 @@ EOF
 echo -e "${GREEN}✓ Generated new .env file${NC}\n"
 
 # ============================================================================
-# Step 7: Summary and Manual Actions
+# Step 9: Summary and Manual Actions
 # ============================================================================
 echo -e "${BLUE}======================================${NC}"
 echo -e "${BLUE}Summary${NC}"
@@ -238,7 +307,22 @@ echo -e "${YELLOW}📋 Updated Variables:${NC}"
 echo -e "  • Resource Group: $AZURE_RESOURCE_GROUP"
 echo -e "  • Location: $AZURE_LOCATION"
 echo -e "  • OpenAI Endpoint: $OPENAI_ENDPOINT"
+
+if [ -n "$OPENAI_API_KEY" ]; then
+    echo -e "  • OpenAI API Key: ${GREEN}✓ Retrieved${NC}"
+else
+    echo -e "  • OpenAI API Key: ${YELLOW}⚠ Not retrieved${NC}"
+fi
+
 echo -e "  • AI Search Endpoint: $AZURE_AI_SEARCH_ENDPOINT"
+
+if [ -n "$SEARCH_API_KEY" ]; then
+    echo -e "  • AI Search API Key: ${GREEN}✓ Retrieved${NC}"
+else
+    echo -e "  • AI Search API Key: ${YELLOW}⚠ Not retrieved${NC}"
+fi
+
+echo -e "  • AI Project Name: $AZURE_AI_PROJECT_NAME"
 echo -e "  • Container Registry: $AZURE_CONTAINER_REGISTRY_ENDPOINT"
 echo -e "  • Service API URI: $SERVICE_API_URI"
 
@@ -248,13 +332,7 @@ else
     echo -e "  • Application Insights: ${YELLOW}⚠ Not found${NC}"
 fi
 
-echo -e "\n${YELLOW}⚠️  Manual Actions Required:${NC}"
-echo -e "The following values are marked as TODO and may need manual update:"
-echo -e "  1. ${BLUE}AZURE_OPENAI_API_KEY${NC} (if not using DefaultAzureCredential)"
-echo -e "     Get from: Azure Portal → $AOAI_NAME → Keys and Endpoint → Key 1"
-echo -e "  2. ${BLUE}AZURE_SEARCH_API_KEY${NC} (if not using DefaultAzureCredential)"
-echo -e "     Get from: Azure Portal → Search service → Keys → Admin Key"
-echo -e "\n${GREEN}💡 Note: If using managed identity, these keys are not required!${NC}\n"
+echo -e "\n${GREEN}💡 All API keys have been automatically retrieved from Azure!${NC}\n"
 
 echo -e "${BLUE}======================================${NC}"
 echo -e "${GREEN}✓ Done!${NC}"

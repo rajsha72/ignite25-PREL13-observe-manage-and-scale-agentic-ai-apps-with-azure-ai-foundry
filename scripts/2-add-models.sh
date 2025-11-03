@@ -177,7 +177,13 @@ get_current_deployments() {
     [ -n "$embed_deployment" ] && CURRENT_DEPLOYMENTS+=("$embed_deployment")
     
     # Also check for additional models already deployed
-    local additional_models=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>/dev/null || echo "[]")
+    local additional_models=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>&1)
+    
+    # Validate it's valid JSON, otherwise use empty array
+    if ! echo "$additional_models" | jq empty 2>/dev/null; then
+        additional_models="[]"
+    fi
+    
     if [ "$additional_models" != "[]" ] && [ -n "$additional_models" ]; then
         # Parse the JSON array and extract deployment names
         local additional_count=$(echo "$additional_models" | jq '. | length' 2>/dev/null || echo "0")
@@ -305,7 +311,13 @@ build_deployment_array() {
     cd "$AZD_SETUP_DIR"
     
     # Get existing additional model deployments
-    local existing_deployments=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>/dev/null || echo "[]")
+    # Capture both stdout and stderr, then check if the output is valid JSON
+    local existing_deployments=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>&1)
+    
+    # If the command failed (e.g., key not found), use empty array
+    if ! echo "$existing_deployments" | jq empty 2>/dev/null; then
+        existing_deployments="[]"
+    fi
     
     # Start with existing deployments (or empty array if none)
     if [ "$existing_deployments" = "[]" ] || [ -z "$existing_deployments" ]; then
@@ -429,7 +441,13 @@ EOF
         log_success "Additional models deployed successfully!"
         
         # Update the environment variable to track what we've deployed
-        local backup_deployments=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>/dev/null || echo "[]")
+        local backup_deployments=$(azd env get-value ADDITIONAL_MODEL_DEPLOYMENTS 2>&1)
+        
+        # Validate backup is valid JSON
+        if ! echo "$backup_deployments" | jq empty 2>/dev/null; then
+            backup_deployments="[]"
+        fi
+        
         azd env set ADDITIONAL_MODEL_DEPLOYMENTS "$DEPLOYMENT_JSON"
         log_success "Environment variable updated with deployment configuration"
     else
