@@ -37,7 +37,7 @@ Use the tab for your learning context. Both tracks converge on validating enviro
         ```title="" linenums="0"
         python ./scripts/2-add-product-index.py
         ```
-    1. Proceed to Section 2 to validate the setup with the notebook.
+    1. Proceed to Step 2 to validate the setup with the notebook.
 
     !!! success "Skillable environment authenticated & configured. Continue to validation."
 
@@ -81,9 +81,10 @@ Use the provided notebook to ensure all required variables and service connectio
 
 1. In VS Code Explorer, open the folder: `labs/0-setup/`
 1. Open the notebook: `labs/0-setup/00-validate-setup.ipynb`
-1. Select the default Python kernel ("Select Kernel" if prompted)
+1. Select the default Python kernel ("Select Kernel" if prompted) - **Select Python 3.12.11**
 1. Run all cells (Run All)
 1. Scroll to the final cell for summary
+1. Close the notebook once done
 
 Expected results:
 - Missing variables = 0
