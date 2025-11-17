@@ -36,18 +36,6 @@ Introduction to Azure AI's evaluation capabilities. Learn the basics of running 
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to run a basic evaluation with Azure AI evaluation SDK using the evaluate() function
-    ```
-
-1. Ask for Explanations:
-
-    ```title="" linenums="0"
-    Help me configure built-in quality and safety evaluators for a test dataset with query-response pairs
-    ```
-
 1. Ask for Specific Help:
 
     ```title="" linenums="0"

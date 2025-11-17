@@ -33,22 +33,10 @@ Cora is Zava Hardware Store's customer service chatbot that helps DIY enthusiast
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to use the Azure AI Evaluation Simulator to generate synthetic test data from my product catalog in Azure AI Search
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Explain the difference between generating synthetic test data with a simulator versus manually creating test queries
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Help me modify the RAG application callback function to include additional metadata fields like product SKU and category
     ```
 
 ## 5. Related Resources

@@ -34,22 +34,10 @@ Cora is Zava's AI customer service representative who helps customers find the r
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to create an agent with Azure AI Agent Service and configure its instructions and personality
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Explain how conversation threads work in Azure AI Agent Service and why they're important
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Help me understand the difference between agents, threads, messages, and runs in Azure AI Foundry
     ```
 
 ## 5. Related Resources

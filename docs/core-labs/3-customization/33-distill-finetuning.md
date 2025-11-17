@@ -42,18 +42,6 @@ Explore model distillation by using a larger, more capable "teacher" model's out
     Explain how model distillation works with teacher-student architecture and when to use it versus fine-tuning or prompt engineering
     ```
 
-1. Ask for Explanations:
-
-    ```title="" linenums="0"
-    Show me how to generate training data from GPT-4 stored completions for distilling knowledge to GPT-4.1-nano
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Help me compare the cost, latency, and quality tradeoffs between teacher and student models using evaluation metrics
-    ```
-
 ## 5. Related Resources
 
 - 📘 [Model Distillation Overview - Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/model-distillation)

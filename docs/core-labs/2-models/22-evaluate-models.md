@@ -37,22 +37,10 @@ Zava's leadership wants to ensure Cora provides the best customer experience pos
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to evaluate multiple Azure OpenAI models side-by-side using the Azure AI Evaluation SDK and publish results to the Foundry portal
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Explain the difference between AI-assisted quality evaluators like relevance and coherence versus content safety evaluators
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Help me add custom evaluation criteria to measure product recommendation accuracy for our hardware retail chatbot
     ```
 
 ## 5. Related Resources

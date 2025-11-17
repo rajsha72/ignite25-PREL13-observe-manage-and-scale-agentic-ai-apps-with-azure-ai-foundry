@@ -42,18 +42,6 @@ Learn the fundamentals of model fine-tuning by training a model on Zava-specific
     Show me how to format training data for fine-tuning in JSONL format with system, user, and assistant message roles
     ```
 
-1. Ask for Explanations:
-
-    ```title="" linenums="0"
-    Help me configure hyperparameters for a fine-tuning job in Azure AI Foundry and explain their impact on model behavior
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Explain how to validate token counts and prepare datasets that balance quality with training costs
-    ```
-
 ## 5. Related Resources
 
 - 📘 [Fine-tune GPT Models - Azure OpenAI Service](https://learn.microsoft.com/azure/ai-services/openai/how-to/fine-tuning)

@@ -37,12 +37,6 @@ Now that Cora is handling customer queries, the team needs production-grade obse
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    How do I trace a production agent handling customer queries?
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
