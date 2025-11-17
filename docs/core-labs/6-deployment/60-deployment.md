@@ -38,22 +38,10 @@ After development and testing, Zava is ready to deploy Cora to production. This 
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    What are the steps to deploy an AI agent to Azure AI Foundry?
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Explain the difference between developer tier and enterprise deployment options
-    ```
-
-1. Ask for Best Practices:
-
-    ```title="" linenums="0"
-    What monitoring should I set up for a production AI agent?
     ```
 
 ## 5. Related Resources
@@ -69,3 +57,9 @@ After development and testing, Zava is ready to deploy Cora to production. This 
 - Proper monitoring and observability are essential for production agent reliability
 - Authentication, rate limiting, and content safety should be configured before production launch
 - The developer tier enables rapid iteration while enterprise deployment provides full production capabilities
+
+---
+
+!!! note "Next Step"
+    Deployment steps complete? Close the notebook and proceed to teardown or further optimization labs.
+

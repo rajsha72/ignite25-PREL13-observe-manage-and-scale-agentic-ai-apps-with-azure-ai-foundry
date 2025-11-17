@@ -36,18 +36,6 @@ Build custom evaluators that assess qualities beyond standard metrics, such as b
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to create a custom evaluator function using the AzureOpenAIPythonGrader class for measuring politeness in responses
-    ```
-
-1. Ask for Explanations:
-
-    ```title="" linenums="0"
-    Help me define scoring criteria and rubrics for brand voice consistency with specific score thresholds
-    ```
-
 1. Ask for Specific Help:
 
     ```title="" linenums="0"
@@ -65,3 +53,8 @@ Build custom evaluators that assess qualities beyond standard metrics, such as b
 - Custom evaluators enable measurement of business-specific quality attributes that standard metrics cannot capture
 - Well-defined grading criteria with clear rubrics ensure consistent and reliable evaluation across model iterations
 - Gold standard baseline examples provide reference points for validating grader accuracy and model performance
+
+---
+
+!!! note "Next Step"
+    Done defining or testing the custom grader? Close the notebook and proceed forward in the customization sequence.

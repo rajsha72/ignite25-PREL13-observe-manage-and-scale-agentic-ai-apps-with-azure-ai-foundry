@@ -37,22 +37,10 @@ Zava's leadership wants to ensure Cora provides the best customer experience pos
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to evaluate multiple Azure OpenAI models side-by-side using the Azure AI Evaluation SDK and publish results to the Foundry portal
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Explain the difference between AI-assisted quality evaluators like relevance and coherence versus content safety evaluators
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Help me add custom evaluation criteria to measure product recommendation accuracy for our hardware retail chatbot
     ```
 
 ## 5. Related Resources
@@ -66,3 +54,8 @@ Zava's leadership wants to ensure Cora provides the best customer experience pos
 - Azure AI Foundry's built-in evaluators provide standardized quality and safety metrics for objective model comparison
 - Side-by-side evaluation reveals performance trade-offs between cost-effective and premium models for specific use cases
 - Publishing evaluation results to Azure AI Foundry portal enables team collaboration and historical comparison of model performance
+
+---
+
+!!! note "Next Step"
+    When evaluations are complete, close the notebook and proceed to customization labs.

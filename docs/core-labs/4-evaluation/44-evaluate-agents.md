@@ -36,22 +36,10 @@ Evaluate agents on metrics specific to agentic AI systems, such as correct inten
 !!! prompt "OPTIONAL: Build Your Intuition"
     Open GitHub Copilot Chat in VS Code by pressing `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Shift+I` (Mac), then try these prompts to build your own intuition on this topic - or write your own. To copy a prompt, hover over the code block below to see the _copy to clipboard_ icon.
 
-1. Ask for Guidance:
-
-    ```title="" linenums="0"
-    Show me how to evaluate agent tool selection and usage with the Tool Call Accuracy Evaluator
-    ```
-
 1. Ask for Explanations:
 
     ```title="" linenums="0"
     Help me measure intent resolution to ensure my agent correctly understands customer requests
-    ```
-
-1. Ask for Specific Help:
-
-    ```title="" linenums="0"
-    Explain how to use Task Adherence Evaluator to validate multi-step agent workflow completion
     ```
 
 ## 5. Related Resources
@@ -65,3 +53,9 @@ Evaluate agents on metrics specific to agentic AI systems, such as correct inten
 - Agent evaluators measure multi-step workflow performance: intent understanding, tool usage accuracy, and task completion
 - Specialized agent metrics complement standard quality/safety evaluators for comprehensive agentic system assessment
 - Agent evaluation requires test data that captures the full workflow context including tool calls and reasoning steps
+
+---
+
+!!! note "Next Step"
+    Finished agent evaluation? Close the notebook and proceed to tracing for deeper execution insights.
+
