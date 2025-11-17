@@ -56,7 +56,7 @@ Use the tab for your learning context. Both tracks converge on validating enviro
         cd scripts
         ./1-setup.sh
         ```
-       Provide interactive answers (example): branch `for-release-1.0.4`, env `Ignite-PREL13`, region `swedencentral`, your subscription id, enable search = yes, accept defaults, proceed.
+       Provide interactive answers (example): branch `for-release-1.0.4`, env `Ignite-PDY123`, region `swedencentral`, your subscription id, enable search = yes, accept defaults, proceed.
     5. Generate/update environment variables from existing resources:
         ```title="" linenums="0"
         ./1-update-env-selfguided.sh
